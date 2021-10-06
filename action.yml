@@ -1,0 +1,21 @@
+name: Manage Team Issue Assigness
+description: Adds team members to a GitHub Issue based on labels
+inputs:
+  issue_number:
+    description: The GitHub issue number
+    required: true
+    default: ${{ github.event.issue.number }}
+  repo:
+    description: The org and repo where the GitHub issue exists
+    required: true
+    default: ${{ github.repository }}
+  teams:
+    description: List of team labels to manage
+    required: true
+  token:
+    description: GitHub Admin PAT to open issues and comment
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
+runs:
+  using: node12
+  main: dist/index.js
